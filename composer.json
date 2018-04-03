@@ -1,10 +1,9 @@
 {
         "name": "iuriip/dotini",
-        "version": "1.1.0",
         "source": {
                 "type": "git",
                 "url": "https://github.com/IuriiP/dotini.git",
-                "reference": "master"
+                "reference": "stable"
         },
         "description": "Loads environment variables from `.ini` to array and optionally make constants automagically.",
         "keywords": ["ini", "dotini", "environment", "constants"],
