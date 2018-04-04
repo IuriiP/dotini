@@ -4,7 +4,7 @@
         "source": {
                 "type": "git",
                 "url": "https://github.com/IuriiP/dotini.git",
-                "reference": "master-dev"
+                "reference": "master"
         },
         "description": "Loads environment variables from `.ini` to array and optionally make constants automagically.",
         "type": "library",
