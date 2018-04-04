@@ -52,6 +52,7 @@ class Dotini {
 	 * 
 	 * @param string $filename
 	 * @param string $ns
+	 * @return array 
 	 * @throws \ErrorException
 	 */
 	public function load($filename, $ns = '')
@@ -73,6 +74,20 @@ class Dotini {
 		throw new \ErrorException("File '{$filename}' not found.");
 	}
 
+	/**
+	 * Build once
+	 * 
+	 * @param string $filename
+	 * @param string $ns
+	 * @return array 
+	 * @throws \ErrorException
+	 */
+	static public function set($filename, $ns = '', $define=true)
+	{
+		$dotini = new Dotini($define);
+		return $dotini->load($filename, $ns);
+	}
+	
 	private function _array($array, $ns, $dirname)
 	{
 		foreach ($array as $key => $value)
