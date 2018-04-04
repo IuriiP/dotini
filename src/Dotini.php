@@ -62,7 +62,7 @@ class Dotini {
 		}
 		if (is_file($filename))
 		{
-			$ini = parse_ini_file($filename, true, INI_SCANNER_TYPED);
+			$ini = @parse_ini_file($filename, true, INI_SCANNER_TYPED);
 			if (false !== $ini)
 			{
 				return $this->_array($ini, $ns, dirname($filename));
