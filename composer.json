@@ -1,18 +1,18 @@
 {
-        "name": "iuriip/dotini",
-        "version": "2.0.0",
+        "name": "yuriimouse/dotini",
+        "version": "2.1.0",
         "source": {
                 "type": "git",
-                "url": "https://github.com/IuriiP/dotini.git",
+                "url": "https://github.com/yuriimouse/dotini.git",
                 "reference": "master"
         },
         "description": "Loads environment variables from `.ini` to array and optionally make constants automagically.",
         "type": "library",
         "keywords": ["ini", "dotini", "environment", "constants"],
-         "homepage": "https://github.com/IuriiP/dotini",
+         "homepage": "https://github.com/yuriimouse/dotini",
         "authors": [
                 {
-                        "name": "Iurii Prudius",
+                        "name": "Yurii Prudius",
                         "email": "hardwork.mouse@gmail.com"
                 }
         ],

@@ -8,6 +8,7 @@ namespace Dotini;
 class DotiniTest extends \PHPUnit\Framework\TestCase {
 
 	/**
+	 * @covers Dotini\Dotini::__construct
 	 * @covers Dotini\Dotini::load
 	 * @expectedException ErrorException
 	 * @expectedExceptionMessage File
@@ -18,6 +19,7 @@ class DotiniTest extends \PHPUnit\Framework\TestCase {
 	}
 
 	/**
+	 * @covers Dotini\Dotini::__construct
 	 * @covers Dotini\Dotini::load
 	 * @expectedException ErrorException
 	 * @expectedExceptionMessage Parse error
@@ -28,15 +30,28 @@ class DotiniTest extends \PHPUnit\Framework\TestCase {
 	}
 
 	/**
+	 * @covers Dotini\Dotini::__construct
+	 * @covers Dotini\Dotini::_array
+	 * @covers Dotini\Dotini::_convert
+	 * @covers Dotini\Dotini::_include
+	 * @covers Dotini\Dotini::_resolve
+	 * @covers Dotini\Dotini::_substitute
 	 * @covers Dotini\Dotini::load
+	 * @covers Dotini\Dotini::set
 	 */
 	public function testDefaultFile() {
-		$object = new Dotini();
-		$ini = $object->load(__DIR__);
-		$this->assertEquals('value', $ini['section']['key']);
+//		$object = new Dotini();
+		$ini = Dotini::set(__DIR__);
+		$this->assertEquals('somevalue', $ini['section']['somekey']);
 	}
 
 	/**
+	 * @covers Dotini\Dotini::__construct
+	 * @covers Dotini\Dotini::_array
+	 * @covers Dotini\Dotini::_convert
+	 * @covers Dotini\Dotini::_include
+	 * @covers Dotini\Dotini::_resolve
+	 * @covers Dotini\Dotini::_substitute
 	 * @covers Dotini\Dotini::load
 	 */
 	public function testSimpleFile() {
@@ -72,6 +87,12 @@ line 3
 	}
 
 	/**
+	 * @covers Dotini\Dotini::__construct
+	 * @covers Dotini\Dotini::_array
+	 * @covers Dotini\Dotini::_convert
+	 * @covers Dotini\Dotini::_include
+	 * @covers Dotini\Dotini::_resolve
+	 * @covers Dotini\Dotini::_substitute
 	 * @covers Dotini\Dotini::load
 	 */
 	public function testComplexFile() {
@@ -89,6 +110,12 @@ line 3
 	}
 
 	/**
+	 * @covers Dotini\Dotini::__construct
+	 * @covers Dotini\Dotini::_array
+	 * @covers Dotini\Dotini::_convert
+	 * @covers Dotini\Dotini::_include
+	 * @covers Dotini\Dotini::_resolve
+	 * @covers Dotini\Dotini::_substitute
 	 * @covers Dotini\Dotini::load
 	 */
 	public function testNestedFile() {
@@ -101,6 +128,12 @@ line 3
 	}
 
 	/**
+	 * @covers Dotini\Dotini::__construct
+	 * @covers Dotini\Dotini::_array
+	 * @covers Dotini\Dotini::_convert
+	 * @covers Dotini\Dotini::_include
+	 * @covers Dotini\Dotini::_resolve
+	 * @covers Dotini\Dotini::_substitute
 	 * @covers Dotini\Dotini::load
 	 */
 	public function testConstants() {

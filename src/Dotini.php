@@ -1,7 +1,7 @@
 <?php
 
 /*
- * Copyright (C) 2017 IuriiP <hardwork.mouse@gmail.com>
+ * Copyright (C) 2017 YuriiP <hardwork.mouse@gmail.com>
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -22,7 +22,7 @@ namespace Dotini;
 /**
  * Dotini allow seting the global constants.
  *
- * @author IuriiP <hardwork.mouse@gmail.com>
+ * @author YuriiP <hardwork.mouse@gmail.com>
  */
 class Dotini {
 
@@ -48,7 +48,7 @@ class Dotini {
 	 * 
 	 * If $ns != false each element define namespaced constant, i.e.
 	 * foo = 'bar' ; define('FOO','bar');
-	 * foo[bar] = 'baz' ; define('foo\BAR','baz');
+	 * Foo[bar] = 'baz' ; define('Foo\BAR','baz');
 	 * 
 	 * @param string $filename
 	 * @param string $ns
