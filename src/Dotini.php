@@ -24,8 +24,8 @@ namespace Dotini;
  *
  * @author YuriiP <hard.work.mouse@gmail.com>
  */
-class Dotini
-{
+class Dotini {
+
     private $_const = false;
     private $_defined = [];
 
@@ -34,8 +34,7 @@ class Dotini
      *
      * @param boolean $define
      */
-    public function __construct($define = false)
-    {
+    public function __construct($define = false) {
         $this->_const = $define;
     }
 
@@ -55,8 +54,7 @@ class Dotini
      * @return array
      * @throws \ErrorException
      */
-    public function load($filename, $ns = '')
-    {
+    public function load($filename, $ns = '') {
         if (is_dir($filename)) {
             $filename = rtrim($filename, '/\\') . DIRECTORY_SEPARATOR . '.ini';
         }
@@ -79,14 +77,12 @@ class Dotini
      * @return array
      * @throws \ErrorException
      */
-    public static function set($filename, $ns = '', $define=true)
-    {
+    public static function set($filename, $ns = '', $define = true) {
         $dotini = new Dotini($define);
         return $dotini->load($filename, $ns);
     }
-    
-    private function _array($array, $ns, $dirname)
-    {
+
+    private function _array($array, $ns, $dirname) {
         foreach ($array as $key => $value) {
             if (is_array($value)) {
                 $new = $array[$key] = $this->_array($value, "{$ns}{$key}\\", $dirname);
@@ -107,40 +103,37 @@ class Dotini
         return $array;
     }
 
-    private function _substitute($value)
-    {
+    private function _substitute($value) {
         return $this->_convert(preg_replace_callback('/\$\[(.+)\]/' // $_SERVER[]
-                    , function ($matches) {
-                        $name = $matches[1];
-                        return isset($_SERVER[$name]) ? (string) $_SERVER[$name] : '';
-                    }, $value));
+                                , function ($matches) {
+                            $name = $matches[1];
+                            return isset($_SERVER[$name]) ? (string) $_SERVER[$name] : '';
+                        }, $value));
     }
 
-    private function _resolve($value)
-    {
+    private function _resolve($value) {
         return is_string($value) ? $this->_convert(preg_replace_callback('/\$\((.+)\)/' // $this[]
-                    , function ($matches) {
-                        $name = str_replace('/', '\\', $matches[1]);
-                        return isset($this->_defined[$name]) ? $this->_defined[$name] : '';
-                    }, $value)) : $value;
+                                , function ($matches) {
+                            $name = str_replace('/', '\\', $matches[1]);
+                            return isset($this->_defined[$name]) ? $this->_defined[$name] : '';
+                        }, $value)) : $value;
     }
 
-    private function _include($value, $ns, $dirname)
-    {
+    private function _include($value, $ns, $dirname) {
         $matches = [];
         if (is_string($value) && preg_match('/^\$\<(.+)\>$/', $value, $matches)) {
-            $filename = $matches[1].'.ini';
-            return $this->load(false === strpos('/\\', $filename{0})? "{$dirname}/{$filename}": $filename, $ns);
+            $filename = $matches[1] . '.ini';
+            return $this->load(false === strpos('/\\', $filename[0]) ? "{$dirname}/{$filename}" : $filename, $ns);
         } else {
             return $value;
         }
     }
 
-    private function _convert($value)
-    {
+    private function _convert($value) {
         if (!is_numeric($value)) {
             return $value;
         }
         return (float) $value !== (int) $value ? floatval($value) : intval($value);
     }
+
 }
